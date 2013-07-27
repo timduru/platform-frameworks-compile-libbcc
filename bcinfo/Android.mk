@@ -30,7 +30,8 @@ else
   # See build/core/version_defaults.mk for more information about this.
   BCINFO_API_VERSION := "(1 + $(PLATFORM_SDK_VERSION))"
 endif
-local_cflags_for_libbcinfo += -DBCINFO_API_VERSION=$(BCINFO_API_VERSION)
+local_cflags_for_libbcinfo += -DBCINFO_API_VERSION=$(BCINFO_API_VERSION) -Wno-error=strict-aliasing
+
 
 LOCAL_PATH := $(call my-dir)
 
@@ -50,6 +51,7 @@ LLVM_ROOT_PATH := external/llvm
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := libbcinfo
+
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_TAGS := optional
 intermediates := $(local-intermediates-dir)
